@@ -19,7 +19,7 @@ This is a basic chat application with functionalities such as send, receive, and
 To send a message, click on the send icon button next to your profile picture at the top left.
 
 
-A modal will popup, here you can select the receipient, and click send message. As of now, only 1 user is supported.
+A modal will popup, here you can select the recipient, and click send message. As of now, only 1 user is supported.
 
 
 The chat section will show up on the main portion of the homepage, you can now enter your message at the bottom textarea, as well as adding emojis, and send the message by pressing the 'Enter' button on your keyboard.
