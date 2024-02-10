@@ -1,0 +1,22 @@
+<div class="home-page row-align">
+    <div class="left-container column-align">
+        <div class="my-profile row-align">
+            <avatar-comp style="flex: 1" name="Oreo" picture="/assets/oreo.jpg"></avatar-comp>
+            <mat-icon color="primary" class="newMsgIcon" (click)="newMessage()">send</mat-icon>
+        </div>
+        <input type="text" class="searchbar" placeholder="Search Here...">
+        <mat-divider></mat-divider>
+        <button mat-stroked-button color="primary" (click)="receiveMessage()">Receive Test Message</button>
+        <div>
+            <div *ngFor="let m of messages$ | async" class="recentMessage">
+                <avatar-comp style="flex: 1" [timestamp]="m.timestamp" (click)="openChat(m)"
+                    [name]="m.to === 'Oreo'? m.from : m.to" [picture]="pm.get(m.to === 'Oreo'? m.from : m.to)" size="44"
+                    [message]="(m.from === 'Oreo'? 'You: ' : '') + m.message"></avatar-comp>
+            </div>
+        </div>
+
+    </div>
+    <div class="right-container">
+        <chat-comp *ngIf="chatTarget !== undefined" [chatTarget]="chatTarget"></chat-comp>
+    </div>
+</div>

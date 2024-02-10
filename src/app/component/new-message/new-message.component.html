@@ -1,0 +1,24 @@
+<div mat-dialog-title class="dialog-title">
+    New Message
+</div>
+<div class="container">
+    <div class="friend-list column-align">
+        <div *ngFor="let friend of friends" class="friend-container" (click)="onSelect(friend)">
+            <avatar-comp [name]="friend.username" size="40" [picture]="friend.picture"></avatar-comp>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="selected-list-container">
+        Select a user to send a message...
+        <div class="selected-list row-align">
+            <div *ngFor="let friend of selected" class="friend-container">
+                <avatar-comp [name]="friend.username" [picture]="friend.picture" size="40"></avatar-comp>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div mat-dialog-action class="row-align" style="padding: 15px; column-gap: 5px; justify-content: flex-end;">
+    <button mat-stroked-button color="primary" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="selected.length === 0" (click)="sendMessage()">Send Message</button>
+</div>

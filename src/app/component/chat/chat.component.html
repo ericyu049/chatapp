@@ -1,0 +1,44 @@
+<div class="container row-align">
+    <div class="right-container column-align" style="flex-grow: 1; padding: 15px;">
+        <div class="info-container">
+            <div class="info row-align">
+                <avatar-comp [name]="chatTarget.username" [picture]="chatTarget.picture"></avatar-comp>
+            </div>
+        </div>
+        <div #chatContainer class="chat-container">
+            <div class="row-align chat-message" *ngFor="let m of messages$ | async; let i = index" (mouseover)="m.overlay = true" (mouseleave)="m.overlay = false">
+                <div style="color:#575757; font-size: 9pt; position: relative; width: 100%;">
+                    <avatar-comp [name]="m.from" size='42' [picture]="pm.get(m.from)" [message]="m.message"
+                        [timestamp]="m.timestamp"></avatar-comp>
+                        <div class="overlay mat-elevation-z3" *ngIf="m.overlay">
+                            <div class="delete-container" (click)="deleteMessage(m)">
+                                <mat-icon color="primary" style="font-size: 20px; height: 20px; width: 20px;">delete</mat-icon>
+                                <span>Delete Message</span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="input-container">
+            <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" (keypress)="keydownSubmit($event)">
+                <mat-form-field appearance="outline" class="inputbox">
+                    <textarea matInput style="height: 100%; resize: none;" formControlName="message"></textarea>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="row-align emoji-container">
+            <div class="button row-align center" [matMenuTriggerFor]="emojiMart">
+                <img style="height: 100%" src="/assets/smile.png">
+                <i class="fa-solid fa-caret-down" style="padding-left: 5px;"></i>
+            </div>
+            <mat-menu #emojiMart [class]="'emojiMenu'" yPosition="above" xPosition="after">
+                <emoji-mart (emojiSelect)="addEmoji($event)" [showPreview]="false" (click)="$event.stopPropagation()">
+                </emoji-mart>
+            </mat-menu>
+            <div class="button" (click)="nudge()">
+                <img style="height: 100%" src="/assets/nudge.png">
+            </div>
+        </div>
+    </div>
+</div>

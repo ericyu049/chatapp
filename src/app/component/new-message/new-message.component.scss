@@ -1,0 +1,29 @@
+.container {
+    padding: 15px;
+    flex: 1;
+    .friend-list {
+        flex: 1;
+        max-height: 230px;
+        overflow-y: scroll;
+        .friend-container {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .friend-container:hover {
+            background-color: #d5d5d5;
+        }
+    }
+    .selected-list-container {
+        min-height: 80px;
+        padding-top: 15px;
+        justify-content: space-between;
+        .selected-list {
+            column-gap: 5px;
+        }
+    }
+}
+.dialog-title {
+    background-color: #673ab7;
+    color: white;
+    flex: 1;
+}

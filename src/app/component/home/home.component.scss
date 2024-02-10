@@ -1,0 +1,35 @@
+.home-page {
+    flex: 1;
+    height: 100%;
+    .left-container {
+        padding: 15px;
+        min-width: 250px;
+        background-color: #f1f1f1;
+        row-gap: 15px;
+        .newMsgIcon {
+            cursor: pointer;
+            padding: 5px;
+        }
+        .newMsgIcon:hover {
+            background-color: #d2d2d2;
+            border-radius: 100%;
+        }
+        .searchbar {
+            height: 44px;
+            border-radius: 15px;
+            border: none;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .recentMessage {
+            align-self: center;
+        }
+        .recentMessage:hover {
+            cursor: pointer;
+            background-color: #d2d2d2;
+        }
+    }
+    .right-container {
+        flex: 1;
+    }
+}

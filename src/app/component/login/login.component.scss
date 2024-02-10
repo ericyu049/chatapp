@@ -1,0 +1,20 @@
+.login-page {
+    flex: 1;
+    height: 100%;
+    .login-panel {
+        border-radius: 10px;
+        min-height: 450px;
+        min-width: 400px;
+        padding: 15px 20px;
+        justify-content: center;
+        .form-field {
+            input {
+                min-width: 180px;
+            }
+        }
+        .login-button {
+            margin-top: 10px;
+            height: 50px;
+        }
+    }
+}

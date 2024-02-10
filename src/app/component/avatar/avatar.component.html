@@ -1,0 +1,15 @@
+<div class="row-align">
+    <div >
+        <div class="propic-container" [ngStyle]="{'height': size + 'px', 'width': size + 'px'}">
+            <div class="propic" [ngStyle]="{'background-image': 'url(' + picture + ')'}"></div>
+        </div>
+    </div>
+    <div class="text">
+        <div class="name">
+            {{name}} <span style="font-size: 8pt;">{{timestamp | date:'short'}}</span>
+        </div>
+        <div class="message">
+            {{message}}
+        </div>
+    </div>
+</div>
