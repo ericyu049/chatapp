@@ -23,7 +23,7 @@ import { RefreshStateService } from './service/refresh.state';
     HomeComponent,
     AvatarComponent,
     ChatComponent,
-    NewMessageComponent
+    NewMessageComponent,
   ],
   imports: [
     BrowserModule,

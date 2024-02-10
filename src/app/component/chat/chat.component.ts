@@ -10,18 +10,17 @@ import { pictureMap } from "../model/picture.map";
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnChanges{
+export class ChatComponent implements OnInit, OnChanges {
     @Input() chatTarget: any;
-    @ViewChild('myContextMenuTrigger') trigger!: MatMenuTrigger;
+    @ViewChild('emojiTrigger') trigger!: MatMenuTrigger;
     messageForm !: FormGroup;
     showEmoji: boolean = false;
-    myClass: string[] = ['emojiMenu'];
     messageSubject = new BehaviorSubject<any>(null);
     messages$ = this.messageSubject.asObservable();
     pm = pictureMap;
-    
+
     get isValid() { return this.messageForm.valid; }
-    constructor(private fb: FormBuilder, private appService: AppService, private refreshStateService: RefreshStateService){
+    constructor(private fb: FormBuilder, private appService: AppService, private refreshStateService: RefreshStateService) {
 
     }
     ngOnInit() {
@@ -43,7 +42,7 @@ export class ChatComponent implements OnInit, OnChanges{
             user1: 'Oreo',
             user2: this.chatTarget.username
         }).pipe(
-            map((messages:any) => {return messages.map((item:any) => ({...item, overlay: false}))}),
+            map((messages: any) => { return messages.map((item: any) => ({ ...item, overlay: false })) }),
             tap((messages) => this.messageSubject.next(messages))
         ).subscribe()
     }
@@ -75,11 +74,7 @@ export class ChatComponent implements OnInit, OnChanges{
     addEmoji(event: any) {
         const message = (this.messageForm.value.message ? this.messageForm.value.message : '') + event.emoji.native;
         this.messageForm.controls['message'].setValue(message);
-    }
-    rightClick(event: any) {
-        event.preventDefault();
-        console.log(event);
-        this.trigger.openMenu();
+        this.trigger.closeMenu();
     }
     deleteMessage(message: any) {
         this.appService.deleteMessage(message).subscribe({
